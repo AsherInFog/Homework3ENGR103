@@ -22,9 +22,9 @@ def fake_func():
 # inside a function.
 # To change the value of the global y from inside the function
 # you have to use the keyword "global"
-# global y
-y = 300
-return y
+    global y
+    y = 300
+    return y
 ##########################################################################
 # Function: main
 # Description: Main program control
