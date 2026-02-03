@@ -2,7 +2,7 @@
 # Program Filename: Homework3_Asher_Charlton.py
 # Author: Asher Charlton 
 # Date: January 22, 2026
-# Description: This program calucates quality control, it gets 5 sample measurements
+# Description: This program calculates quality control, it gets 5 sample measurements
 #              from the user then calculates the samplea average. It then asks for a
 #              goal average and standard deviation, then with that input it 
 #              calculates and then displays the upper and lower bounds.
