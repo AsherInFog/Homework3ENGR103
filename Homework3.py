@@ -3,7 +3,7 @@
 # Author: Asher Charlton 
 # Date: January 22, 2026
 # Description: This program calculates quality control, it gets 5 sample measurements
-#              from the user then calculates the samplea average. It then asks for a
+#              from the user then calculates the sample average. It then asks for a
 #              goal average and standard deviation, then with that input it 
 #              calculates and then displays the upper and lower bounds.
 # Input: Five sample measurement values (floats), the goal average (float),
@@ -24,6 +24,9 @@ def moi_sample():
         while True:
             try:
                 val = float(input(f"Please enter the value for measure {i}: "))
+                if val <= 0:
+                    print("\nPlease enter in a value greater than 0")
+                    continue
             except ValueError:
                 print("\nInvalid input. Please enter a NUMBER.")
                 continue
@@ -75,6 +78,14 @@ def upperbound_calc(moi, gsd, n):
     upper = moi + ((3 * gsd)/math.sqrt(n))
     return upper
 
+def avg_range(avg, lower, upper):
+    if avg < lower:
+        print(f"Your average of {avg:.2f} is below the range of the bounds")
+    elif avg > upper:
+        print(f"Your average of {avg:.2f} is above the range of the bounds")
+    else:
+        print(f"Your average of {avg:.2f} is within the range of the bounds")
+
 
 def main():
     welcome_msg()
@@ -86,11 +97,11 @@ def main():
 
     n = len(interest)
     lower = lowerbound_calc(moi, gsd, n)
-    upper = upperbound_calc(moi, gsd, n)
+    upper = upperbound_calc(moi, gsd, n)        
 
     print(f"\n\nYour lower bound is {lower:.2f}")
-    print(f"Your average is {avg:.2f}")
     print(f"Your upper bound is {upper:.2f}")
+    avg_range(avg,lower,upper)
     print("\n\nThank you for using my program!")
 
 main()
