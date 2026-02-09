@@ -18,6 +18,7 @@ def welcome_msg():
     print("  Welcome to Asher's Quality Control Program!")
     print("{===============================================}")
 
+# Function that stores 5 samples in a list, uses for i loop to make it cleaner and simpler
 def moi_sample():
     interest = []
     for i in range(1, 6):
@@ -39,6 +40,7 @@ def avg_sample_calc(values):
     return avg
 
 
+#Function that asks the user for input for the goal average
 def moi_goal_average():
     while True:
         try:
@@ -53,6 +55,7 @@ def moi_goal_average():
     return moi
     
 
+# Function that asks for the goal standard deviation from the user
 def goal_standard_deviation():
     while True:
         try:
@@ -67,15 +70,17 @@ def goal_standard_deviation():
     return gsd
             
 
+# Function to calculate the lowerbound, needs the moi, gsd, and n as parameters 
 def lowerbound_calc(moi, gsd, n):
     lower = moi - ((3 * gsd)/math.sqrt(n))
     return lower
 
+# Function to calculate the upperbound, needs the moi, gsd, and n as parameters 
 def upperbound_calc(moi, gsd, n):
     upper = moi + ((3 * gsd)/math.sqrt(n))
     return upper
 
-
+# Main function that calls all the other functions 
 def main():
     welcome_msg()
    
