@@ -63,7 +63,7 @@ def goal_standard_deviation():
     while True:
         try:
             gsd = float(input("Please enter the goal standard deviation: "))
-            if gsd < 0:
+            if gsd < 0: 
                 print("\nPlease enter in a posive number")
                 continue
         except ValueError:
