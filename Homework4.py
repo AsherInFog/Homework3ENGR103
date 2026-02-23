@@ -20,6 +20,7 @@ import time
 # Post-Conditions: Prints messages to user
 ##########################################################################
 def welcome():
+    # This is one way I like to format my welcome messages, makes it look nice :)
     print("\n=============================================")
     print(" Welcome to Asher's Learning Curve Calculator")
     print("=============================================")
@@ -42,7 +43,7 @@ def goal_cycle_input():
                 print("\nERROR, please enter in a value greater than 0")
                 time.sleep(.5)
                 continue
-        
+        # This just makes sure they enter in a an actual number
         except ValueError:
             print("\nERROR, please enter in a NUMBER greater than 0")
             time.sleep(.5)
@@ -62,14 +63,16 @@ def goal_cycle_input():
 def first_cycle_input(goal_cycle):
     while True:
         try:
+            # Makes sure that the first cycle is greater than the goal cycle
             first_cycle = float(input("\nPlease enter in the FIRST cycle time in minutes (should be greater than the goal cycle time): "))
             if first_cycle <= 0:
                 print("\nERROR, please enter in a value greater than 0")
                 time.sleep(.5)
                 continue
             if first_cycle <= goal_cycle:
-                print("\nERROR, the input for the first cycle must be greater than the goal cycle, try again")
+                print("\nERROR, the input for the first cycle must be greater than the goal cycle, try again from the start, sorry :( ")
                 exit()
+        # This just makes sure they enter in a an actual number
         except ValueError:
             print("\nERROR, please enter in a NUMBER greater than 0")
             time.sleep(.5)
@@ -89,12 +92,13 @@ def first_cycle_input(goal_cycle):
 def slope_input():
     while True:
         try:
+            # Makes sure it enders in a valid value within the wanted range
             slope = float(input("\nPlease enter in the slope as a number less than 0: "))
             if slope >= 0:
                 print("\nERROR, please enter in value LESS than 0")
                 time.sleep(.5)
                 continue
-
+        # This just makes sure they enter in a an actual number
         except ValueError:
             print("\nERROR, please enter in a NUMBER less than 0")
             time.sleep(.5)
@@ -113,6 +117,7 @@ def slope_input():
 ##########################################################################
 def calc_cycle_time(first_cycle, number_cycle, slope):
     return first_cycle * (number_cycle ** slope)
+    # Simple calculation for the cycle time
 
 
 ##########################################################################
@@ -132,14 +137,16 @@ def number_cycle(first_cycle, slope, goal_cycle):
     while True:
         cycle_time = calc_cycle_time(first_cycle, cycle, slope)
         print(f"Cycle: {cycle}\t{cycle_time:.3f}")
+        # Will continue to print out cycles using the function above
 
         if cycle_time <= goal_cycle:
             print("\nThe desired cycle time has been achieved")
-            time.sleep(1)
-            print("\nThank you for using my program!")
             learning_percent = (2 ** slope) * 100
             print(f"The learning percent is {learning_percent:.1f}%")
+            time.sleep(1)
+            print("\nThank you for using my program!")
             break
+            # Goes until it reaches the goal cycle
 
         if cycle % 100 == 0:
             choice = input("\n100 cycles or more have been reached, would you like to continue? (n = no, y = yes): ")
@@ -151,6 +158,7 @@ def number_cycle(first_cycle, slope, goal_cycle):
             elif choice.lower() == 'y':
                 print("\nContinuing...")
                 time.sleep(1)
+                # Gives the user the option to quit once they reach 100
 
         cycle += 1
 
